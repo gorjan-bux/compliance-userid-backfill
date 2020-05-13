@@ -8,7 +8,6 @@ import java.lang.String.format
 import java.lang.String.join
 import java.net.URI
 import java.net.URLEncoder
-import java.net.http.HttpClient
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -29,8 +28,6 @@ const val newFileHeaders = "Original file line number, buxUserId"
  * write each match in a new file
  */
 fun main(args: Array<String>) {
-    val client = HttpClient.newHttpClient()
-
     fun search(firstName: String, lastName: String): List<UserSearchResult> {
         val searchQuery = URLEncoder.encode(join(firstName, lastName, " "), StandardCharsets.UTF_8.toString())
         val response = khttp.get(
